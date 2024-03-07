@@ -1,0 +1,33 @@
+-
+  feature: 模块
+  story: 接口
+  title: 标题
+  request:
+    method: post
+    url: http://127.0.0.1:9182//contract/createbycategory
+    headers: null
+    json:
+      subject: "open-企业"
+      description: "描述"
+      sn: ""
+      ordinal: true
+      categoryId: "3183852085512216651"
+      creatorName: "张豪"
+      creatorContact: "10000000001"
+      tenantName: "众畅科技"
+      endTime: ""
+      documents:
+        - ${documentId}
+      signatories:
+        - tenantType: "COMPANY"
+          tenantName: "众畅科技"
+          receiverName: "张豪"
+          contact: "10000000001"
+          serialNo: 1
+          actions:
+            - type: "PERSONAL"
+              name: "个人签字"
+              serialNo: 1
+              actionOperators:
+                - operatorContact: "10000000001"
+  vilidate: 断言

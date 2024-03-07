@@ -1,0 +1,19 @@
+-
+  feature: 模块
+  story: 接口
+  title: 获取合同签署页面
+  request:
+    method: post
+    url: http://127.0.0.1:9182/contract/signurl
+    headers: null
+    json:
+      contractId: ${contractId}
+      tenantName: "张豪"
+      tenantType: "PERSONAL"
+      contact: "10000000001"
+      canLpSign: "1"
+      language: "ZH_CN"
+      canReturn: false
+      canWithdraw: false
+      canViewDetail: false
+  vilidate: 断言

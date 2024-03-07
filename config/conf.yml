@@ -1,0 +1,14 @@
+BASE:
+  # log等级
+  log_level: "debug"
+  # 扩展名
+  log_extension: ".log"
+  test:
+    url: "http://pcapi-xiaotuxian-front-devtest.itheima.net"
+    case_file: "testdata.xlsx"
+    case_sheet: "美多商城接口测试"
+email:
+  smtpserver: "smtp.qq.com"
+  username: "1490625639@qq.com"
+  password: "faxxhfvbyvdtjbhh"
+  receiver: "1490625639@qq.com"
