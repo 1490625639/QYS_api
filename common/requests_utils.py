@@ -15,6 +15,6 @@ class RequestUtil:
     # 统一请求封装
     def send_all_request(self, **kwargs):
         res=RequestUtil.sess.request(**kwargs)
-        print(res.json())
+        # print(res.json())
         return  res
 
