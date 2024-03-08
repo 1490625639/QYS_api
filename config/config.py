@@ -5,7 +5,7 @@ File    ：config.py
 Author  ：张以白
 Date    ：2024/3/8 3:47 
 """
-from common.yaml_util import YamlReader
+from utils.yaml_util import YamlReader
 
 # -*- coding:utf-8 -*-
 """
@@ -70,7 +70,7 @@ def get_db_config_file():
 class ConfigYaml:
     # 初始yaml读取配置文件
     def __init__(self):
-        self.config = YamlReader(get_config_file()).data()
+         self.config = YamlReader(get_config_file()).data()
         # print(self.config)
 
     # 定义方法获取信息

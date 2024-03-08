@@ -5,8 +5,8 @@ File    ：TestApi2.py
 Author  ：张以白
 Date    ：2024/3/7 0:21 
 """
-from common.requests_utils import RequestUtil
-from common.yaml_util import write_yaml, read_yaml
+from utils.requests_utils import RequestUtil
+from utils.yaml_util import write_yaml, read_yaml
 from testcases.test_api import TestApi, timestamp
 
 class TestApi2:

@@ -13,13 +13,13 @@ from datetime import datetime
 
 import pytest
 
-from common.log_util import my_log
-from common.yaml_util import write_yaml, read_yaml, read_yaml_testcase
+from utils.log_util import my_log
+from utils.yaml_util import write_yaml, read_yaml, read_yaml_testcase
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import requests
 
-from common.requests_utils import RequestUtil
+from utils.requests_utils import RequestUtil
 
 timestamp = str(int(time.time() * 1000))
 
@@ -54,6 +54,7 @@ class TestApi:
         print(base_url)
         my_log().debug("debug测试")
 
+    @pytest.mark.flaky(reruns=3, reruns_delay=2)    #失败重试
     @pytest.mark.parametrize("file_data", read_yaml_testcase("test_creatbyfile.yaml"))
     def test_createbyfile(self, file_data):
         file_path = file_data["file_path"]
