@@ -1,7 +1,7 @@
 -
   feature: 前台模块
   story: 接口
-  title: 获取合同详情
+  title: 合同详情
   request:
     method: get
     url: http://127.0.0.1:9182/contract/detail

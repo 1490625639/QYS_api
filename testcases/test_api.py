@@ -11,8 +11,10 @@ import sys
 import os
 from datetime import datetime
 
+import allure
 import pytest
 
+from utils.allure_util import get_allure
 from utils.log_util import my_log
 from utils.yaml_util import write_yaml, read_yaml, read_yaml_testcase
 
@@ -67,6 +69,7 @@ class TestApi:
             "documentId": res.json()['result']['documentId']
         })
         print("读取", read_yaml('documentId'))
+        get_allure(file_data)
 
     @pytest.mark.parametrize("heton", read_yaml_testcase("test_api.yaml"))
     def test_createbycategory(self, heton):
@@ -83,7 +86,7 @@ class TestApi:
         write_yaml({
             "contractId": res.json()['contractId']
         })
-
+        get_allure(heton)
     # @pytest.mark.smoke
     @pytest.mark.parametrize("detail", read_yaml_testcase("test_detail.yaml"))
     def test_detail(self, detail):
@@ -102,6 +105,7 @@ class TestApi:
         # res = requests.get(
         #     url="http://127.0.0.1:9182/contract/detail", headers=TestApi.headers, params=datas
         # )"""
+        get_allure(detail)
 
     @pytest.mark.parametrize('signurl', read_yaml_testcase('test_signurl.yaml'))
     def test_signurl(self, signurl):
@@ -112,6 +116,7 @@ class TestApi:
                                              headers=TestApi.headers)
 
         print(res.json())
+        get_allure(signurl)
 
 
 if __name__ == '__main__':

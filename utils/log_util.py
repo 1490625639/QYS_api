@@ -84,8 +84,8 @@ log_level = ConfigYaml().get_conf_log()
 def my_log(log_name=__file__):
     return Logger(log_file=logfile, log_name=str(log_name), log_level=log_level).logger
 
-
-if __name__ == '__main__':
-    my_log().debug("debug测试")
-    my_log().info("info测试")
+#
+# if __name__ == '__main__':
+#     my_log().debug("debug测试")
+#     my_log().info("info测试")
 

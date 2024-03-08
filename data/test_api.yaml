@@ -1,7 +1,7 @@
 -
-  feature: 模块
+  feature: 前台模块
   story: 接口
-  title: 标题
+  title: 创建合同
   request:
     method: post
     url: http://127.0.0.1:9182//contract/createbycategory

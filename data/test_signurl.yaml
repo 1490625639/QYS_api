@@ -1,7 +1,7 @@
 -
-  feature: 模块
+  feature: 前台模块
   story: 接口
-  title: 获取合同签署页面
+  title: 合同签署页面
   request:
     method: post
     url: http://127.0.0.1:9182/contract/signurl
