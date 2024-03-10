@@ -42,21 +42,11 @@ class TestApi:
 
     }
 
-    """documentId = ""
-    contractId = ""
-    @pytest.mark.parametrize("caseinfo",["地球",'火星'])
-    def test_canshu(self,caseinfo):
-        print(caseinfo)
-    @pytest.mark.parametrize("caseinfo2", read_yaml_testcase("test_api.yaml"))
-    def test_canshu2(self, caseinfo2):
-        print(caseinfo2)
-        print(caseinfo2['feature'])
-        print(caseinfo2['request']['method'])"""
-    def test_baseurl(self, base_url,connect_mysql):  # pytest 配置base_url练习
+    def test_baseurl(self, base_url, connect_mysql):  # pytest 配置base_url练习
         print(base_url)
         my_log().debug("debug测试")
 
-    @pytest.mark.flaky(reruns=3, reruns_delay=2)    #失败重试
+    @pytest.mark.flaky(reruns=3, reruns_delay=2)  # 失败重试
     @pytest.mark.parametrize("file_data", read_yaml_testcase("test_creatbyfile.yaml"))
     def test_createbyfile(self, file_data):
         file_path = file_data["file_path"]
@@ -73,8 +63,7 @@ class TestApi:
 
     @pytest.mark.parametrize("heton", read_yaml_testcase("test_api.yaml"))
     def test_createbycategory(self, heton):
-        documentId = read_yaml('documentId')
-        heton['request']['json']['documents'] = [documentId]
+        heton['request']['json']['documents'] = [read_yaml('documentId')]
         heton['request']['json']['subject'] += str(datetime.now())
 
         method = heton['request']["method"]
@@ -87,12 +76,10 @@ class TestApi:
             "contractId": res.json()['contractId']
         })
         get_allure(heton)
+
     # @pytest.mark.smoke
     @pytest.mark.parametrize("detail", read_yaml_testcase("test_detail.yaml"))
     def test_detail(self, detail):
-        # datas = {
-        #     "contractId": read_yaml('contractId')
-        # }
         contractId = read_yaml('contractId')
         detail['request']['params']['contractId'] = contractId
 
@@ -100,17 +87,11 @@ class TestApi:
                                              headers=TestApi.headers, params=detail['request']['params'])
 
         response_text = res.json()
-        print(response_text['contract']['subject'])
-        """ # res=TestApi.sess.request("get",url="http://127.0.0.1:9182/contract/detail", headers=TestApi.headers, params=datas)
-        # res = requests.get(
-        #     url="http://127.0.0.1:9182/contract/detail", headers=TestApi.headers, params=datas
-        # )"""
         get_allure(detail)
 
     @pytest.mark.parametrize('signurl', read_yaml_testcase('test_signurl.yaml'))
     def test_signurl(self, signurl):
         signurl['request']['json']['contractId'] = read_yaml('contractId')
-
         res = RequestUtil().send_all_request(method=signurl['request']['method'], url=signurl['request']['url'],
                                              json=signurl['request']['json'],
                                              headers=TestApi.headers)
