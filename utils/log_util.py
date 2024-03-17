@@ -67,7 +67,7 @@ class Logger:
 # 日志文件名称，日志文件级别
 # 日志文件名称=logs目录+当前时间+扩展名
 log_path = config.get_log_path()
-print(log_path)
+# print(log_path)
 # 当前时间
 current_time = datetime.datetime.now().strftime("%Y-%m-%d")
 # 扩展名

@@ -7,7 +7,9 @@ Date    ：2024/3/9 1:19
 """
 import subprocess
 
+from utils.EmailUtil import SendEmail
 from utils.log_util import my_log
+from config.config import ConfigYaml
 
 
 def allure_report(report_path, report_html):
@@ -27,3 +29,26 @@ def allure_report(report_path, report_html):
     except:
         my_log().info("报告地址")
         raise
+
+
+def send_mail(report_html_path="",content="",title="测试报告"):
+    """
+    :param report_html_path:
+    :param content:
+    :param title:
+    :return:
+    """
+    email_info = ConfigYaml().get_email_info()
+    smtp_addr = email_info["smtpserver"]
+    username = email_info["username"]
+    password = email_info["password"]
+    recv = email_info["receiver"]
+    email = SendEmail(
+        smtp_addr=smtp_addr,
+        username=username,
+        password=password,
+        recv=recv,
+        title=title,
+        content=content,
+        file=report_html_path)
+    email.send_mail()

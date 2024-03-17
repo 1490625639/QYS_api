@@ -71,7 +71,6 @@ class ConfigYaml:
     # 初始yaml读取配置文件
     def __init__(self):
          self.config = YamlReader(get_config_file()).data()
-        # print(self.config)
 
     # 定义方法获取信息
     def get_conf_url(self):
@@ -102,9 +101,9 @@ class ConfigYaml:
 
 if __name__ == '__main__':
     conf_read = ConfigYaml()
-    # print(conf_read.get_conf_url())
-    # print(conf_read.get_conf_log(), conf_read.get_conf_extension())
-    #print(conf_read.get_db_conf_info("db_2"))
- #   print(conf_read.get_excel_file())
-#    print(conf_read.get_excel_sheet())
-    print(conf_read.get_email_info())
+#     # print(conf_read.get_conf_url())
+#     # print(conf_read.get_conf_log(), conf_read.get_conf_extension())
+#     #print(conf_read.get_db_conf_info("db_2"))
+#  #   print(conf_read.get_excel_file())
+# #    print(conf_read.get_excel_sheet())
+#     print(conf_read.get_email_info())
