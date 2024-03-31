@@ -10,19 +10,15 @@ import time
 import sys
 import os
 from datetime import datetime
-
+import requests
+from utils.requests_utils import RequestUtil
 import allure
 import pytest
-
 from utils.allure_util import get_allure
 from utils.log_util import my_log
 from utils.yaml_util import write_yaml, read_yaml, read_yaml_testcase
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-import requests
-
-from utils.requests_utils import RequestUtil
-
 timestamp = str(int(time.time() * 1000))
 
 
@@ -33,8 +29,6 @@ class TestApi:
     signature = AppToken + AppSecret + timestamp
     md5_hash = hashlib.md5(signature.encode()).hexdigest()  # 计算MD5哈希值
     sess = requests.session()
-    URL = "http://127.0.0.1:9182/"
-
     headers = {
         "x-qys-accesstoken": AppToken,
         "x-qys-timestamp": timestamp,
@@ -44,16 +38,17 @@ class TestApi:
 
     def test_baseurl(self, base_url, connect_mysql):  # pytest 配置base_url练习
         print(base_url)
-        my_log().debug("debug测试")
+        my_log().debug("base_url debug测试")
 
     @pytest.mark.flaky(reruns=3, reruns_delay=2)  # 失败重试
     @pytest.mark.parametrize("file_data", read_yaml_testcase("test_creatbyfile.yaml"))
-    def test_createbyfile(self, file_data):
+    def test_createbyfile(self, base_url, file_data):
         file_path = file_data["file_path"]
         files = {"file": open(file_path, 'rb')}
 
         data = {'title': file_data["title"], 'fileType': file_data["file_type"]}
-        res = RequestUtil().send_all_request(method=file_data['request']['method'], url=file_data['request']['url'],
+        res = RequestUtil().send_all_request(method=file_data['request']['method'],
+                                             url=base_url + file_data['request']['url'],
                                              headers=TestApi.headers, files=files, data=data)
         write_yaml({
             "documentId": res.json()['result']['documentId']

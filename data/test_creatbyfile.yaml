@@ -6,7 +6,7 @@
   story: 接口
   request:
     method: post
-    url: http://127.0.0.1:9182/v2/document/createbyfile
+    url: /v2/document/createbyfile
     headers: null
     json: null
   vilidate: 断言

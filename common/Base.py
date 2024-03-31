@@ -22,7 +22,7 @@ def allure_report(report_path, report_html):
     # 定义执行命令
     allure_cmd = "allure generate %s -o %s --clean" % (report_path, report_html)
 
-    my_log().info("报告地址")
+    # my_log().info("报告地址")
 
     try:
         subprocess.call(allure_cmd, shell=True)

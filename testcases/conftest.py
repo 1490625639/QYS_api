@@ -8,7 +8,10 @@ Date    ：2024/3/7 17:13
 import time
 
 import pytest
+import sys
+import os
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from common import Base
 from utils.yaml_util import clear_yaml
 
