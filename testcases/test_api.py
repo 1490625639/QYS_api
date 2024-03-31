@@ -37,7 +37,7 @@ class TestApi:
     }
     documentId = ""
     contractId = ""
-    @pytest.mark.file
+    # @pytest.mark.file
 
     def test_createbyfile(self):
         file_path = "D:/Desktop/面试/20220613面试复盘.docx"  # 替换为你要上传的文件路径
@@ -50,7 +50,7 @@ class TestApi:
         # )
         TestApi.documentId = res.json()['result']['documentId']
 
-    @pytest.mark.smoke
+    # @pytest.mark.smoke
     def test_detail(self):
         datas = {
             "contractId": "3202893801130754238"
