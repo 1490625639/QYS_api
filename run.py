@@ -21,6 +21,6 @@ if __name__ == '__main__':
     # Base.allure_report('./report/result','./report/html')
     report_path=config.config.get_report_path()+os.sep+"result"
     report_html_path=report_path+os.sep+"html"
-    Base.send_mail(content=report_html_path,title='我的测试报告')
+    Base.send_mail(content=report_html_path,title='测试一下我的测试报告')
     # write_yaml(data={"name":"张彤123"})
     # print(read_yaml_testcase("test_api.yaml"))
